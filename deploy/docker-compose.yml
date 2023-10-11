@@ -7,14 +7,15 @@ services:
   # define database container
   db:
     container_name: app_${APP_ENV}_db
-    image: postgres:14.1-alpine
+    image: mysql:8.1.0
     restart: always
     environment:
-      - POSTGRES_USER=appdb
-      - POSTGRES_PASSWORD=appdb
-      - POSTGRES_DB=appdb
+      - MYSQL_ROOT_PASSWORD=toto
+      - MYSQL_USER=appdb
+      - MYSQL_PASSWORD=appdb
+      - MYSQL_DATABASE=appdb
     volumes:
-      - db:/var/lib/postgresql/data
+      - db:/var/lib/mysql
     networks:
       - appinternals
 

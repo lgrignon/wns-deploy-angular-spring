@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DeployAngularSpringApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(DeployAngularSpringApplication.class, args);
 	}
 

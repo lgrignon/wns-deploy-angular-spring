@@ -4,18 +4,18 @@ services:
 
   # base de données de l'application
   db:
-    image: postgres:14.1-alpine
+    container_name: app_${APP_ENV}_db
+    image: mysql:8.1.0
     restart: always
     environment:
-      - POSTGRES_USER=appdb
-      - POSTGRES_PASSWORD=appdb
-      - POSTGRES_DB=appdb
+      - MYSQL_ROOT_PASSWORD=toto
+      - MYSQL_USER=appdb
+      - MYSQL_PASSWORD=appdb
+      - MYSQL_DATABASE=appdb
     volumes:
-      - db:/var/lib/postgresql/data
+      - last-deploy-quest-db:/var/lib/mysql
     networks:
       - appinternals
- 
-  # backend de l'application
   back:
     image: wns-deploy-angular-spring-back:latest
     depends_on:
@@ -49,7 +49,7 @@ services:
       - ./logs:/var/log/nginx
 volumes:
   web-client-build:
-  db:
+  last-deploy-quest-db:
     driver: local
 networks:
   appinternals:
