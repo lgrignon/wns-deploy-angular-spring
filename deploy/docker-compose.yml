@@ -15,7 +15,7 @@ services:
       - MYSQL_PASSWORD=appdb
       - MYSQL_DATABASE=appdb
     volumes:
-      - db:/var/lib/mysql
+      - last-deploy-quest-db:/var/lib/mysql
     networks:
       - appinternals
 
@@ -44,7 +44,7 @@ services:
       - ${GATEWAY_PORT:-8000}:80
 
 volumes:
-  db:
+  last-deploy-quest-db:
     driver: local
 networks:
   appinternals:
